@@ -1,6 +1,8 @@
 FROM n8nio/n8n
 
-ENV N8N_BASIC_AUTH_ACTIVE=true
+# Kopiere das Start-Skript ins Arbeitsverzeichnis
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 
-COPY start.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+# Setze das Start-Skript als EntryPoint
+ENTRYPOINT ["/start.sh"]
